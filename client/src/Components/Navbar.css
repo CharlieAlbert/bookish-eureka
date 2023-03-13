@@ -1,0 +1,12 @@
+.startup {
+  color: #0075c9;
+}
+
+.btn {
+  color: #0075c9;
+  outline: 1px solid #0075c9;
+}
+
+.btn:hover {
+  background-color: #0075c9;
+}
