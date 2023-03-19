@@ -1,52 +1,80 @@
-import React from "react";
+import React, { ComponentProps, FC, useState } from "react";
 import "./Navbar.css";
+import {
+  MDBDropdown,
+  MDBDropdownItem,
+  MDBDropdownMenu,
+  MDBDropdownToggle,
+  MDBDropdownLink,
+  MDBBtn,
+} from "mdb-react-ui-kit";
+import avatar from "../Assets/babe-avatar.jpg";
 
 const Navbar = () => {
   return (
-    <div>
-      <nav className="navbar navbar-expand-lg mb-5">
-        <div className="container-fluid">
-          <a className="navbar-brand ms-4" href="#">
-            <span className="startup">STARTUP</span>Hive
-          </a>
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarText"
-            aria-controls="navbarText"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarText">
-            <ul className="navbar-nav me-auto navbar-nav-scroll mb-2 mb-lg-0">
-              <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="#">
-                  Home
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  About
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  Resources
-                </a>
-              </li>
-            </ul>
-            <span className="navbar-text me-5">
-              <button type="button" class="btn">
-                Sign Up
-              </button>
-            </span>
+    <nav className="navbar navbar-expand-lg bg-body-tertiary">
+      <div className="container-fluid ms-4">
+        <a className="navbar-brand" href="#">
+          StartupHive
+        </a>
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div className="navbar-nav">
+            <a className="nav-link active" aria-current="page" href="/">
+              Home
+            </a>
+            <a className="nav-link" href="#">
+              About
+            </a>
+            <a className="nav-link" href="#">
+              Resources
+            </a>
+          </div>
+          <div className="d-flex ms-auto">
+            <MDBBtn outline className="me-5">
+              Sign Up
+            </MDBBtn>
+            <MDBDropdown className="">
+              <MDBDropdownToggle
+                tag="a"
+                className="nav-link d-flex align-items-center"
+                href="#"
+              >
+                <img
+                  src={avatar}
+                  className="rounded-circle"
+                  height="22"
+                  width="22"
+                  alt="Avatar"
+                  loading="lazy"
+                />
+              </MDBDropdownToggle>
+              <MDBDropdownMenu>
+                <MDBDropdownItem>
+                  <MDBDropdownLink href="/profile">My Profile</MDBDropdownLink>
+                </MDBDropdownItem>
+                <MDBDropdownItem>
+                  <MDBDropdownLink href="#">Settings</MDBDropdownLink>
+                </MDBDropdownItem>
+                <MDBDropdownItem>
+                  <MDBDropdownLink href="#">Logout</MDBDropdownLink>
+                </MDBDropdownItem>
+              </MDBDropdownMenu>
+            </MDBDropdown>
           </div>
         </div>
-      </nav>
-    </div>
+      </div>
+    </nav>
   );
 };
 

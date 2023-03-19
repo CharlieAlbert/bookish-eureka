@@ -60,7 +60,7 @@ function Footer() {
                       StartupHive
                     </a>
                   </div>
-                  <div class="footer-text">
+                  <div class="container footer-text">
                     <p>
                       {" "}
                       StartupHive is a platform that connects <br />
