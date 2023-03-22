@@ -1,9 +1,10 @@
 import React, { useRef, useState } from "react";
+import "./ChatRoom.css";
 
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import "firebase/compat/firestore";
-import 'firebase/compat/analytics'
+import "firebase/compat/analytics";
 
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useCollectionData } from "react-firebase-hooks/firestore";
@@ -20,19 +21,16 @@ firebase.initializeApp({
 
 const firestore = firebase.firestore();
 const auth = firebase.auth();
-const analytics = firebase.analytics()
+const analytics = firebase.analytics();
 
 function ChatRoom() {
-  const [user] = useAuthState(auth)
+  const [user] = useAuthState(auth);
 
   return (
     <div>
-
-      <section>
-        {user ? <Superchat /> : <SignIn />}
-      </section>
+      <section>{user ? <Superchat /> : <SignIn />}</section>
     </div>
-  )
+  );
 }
 
 function SignIn() {
@@ -50,7 +48,6 @@ function SignOut() {
   );
 }
 
-
 function Superchat() {
   const dummy = useRef();
   const messagesRef = firestore.collection("messages");
@@ -58,7 +55,7 @@ function Superchat() {
 
   const [messages] = useCollectionData(query, { idField: "id" });
 
-  const [formValue, setFormValue] = useState('');
+  const [formValue, setFormValue] = useState("");
 
   const sendMessage = async (e) => {
     e.preventDefault();
@@ -73,7 +70,7 @@ function Superchat() {
     });
 
     setFormValue("");
-    dummy.current.scrollIntoView({behavior: 'smooth'})
+    dummy.current.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -81,7 +78,7 @@ function Superchat() {
       <main>
         {messages &&
           messages.map((msg) => <ChatMessage key={msg.id} message={msg} />)}
-        
+
         <span ref={dummy}></span>
       </main>
 
@@ -90,7 +87,9 @@ function Superchat() {
           value={formValue}
           onChange={(e) => setFormValue(e.target.value)}
         />
-        <button type="submit" disabled={!formValue}>Send</button>
+        <button type="submit" disabled={!formValue}>
+          Send
+        </button>
       </form>
     </>
   );

@@ -33,16 +33,16 @@ const Navbar = () => {
             <a className="nav-link active" aria-current="page" href="/">
               Home
             </a>
-            <a className="nav-link" href="#">
+            <a className="nav-link" href="/">
               About
             </a>
-            <a className="nav-link" href="#">
+            <a className="nav-link" href="/">
               Resources
             </a>
           </div>
           <div className="d-flex ms-auto">
             <MDBBtn outline className="me-5">
-              Sign Up
+              Sign Out
             </MDBBtn>
             <MDBDropdown className="">
               <MDBDropdownToggle
